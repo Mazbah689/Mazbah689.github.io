@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mazbah's Portfolio</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: black;
+      color: white;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: #2563eb;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+      color: #1d4ed8;
+      outline: none;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    header {
+      background-color: black;
+      color: rgb(111, 111, 221);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+    }
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      user-select: none;
+    }
+    nav {
+      display: flex;
+      gap: 24px;
+    }
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 8px 4px;
+      border-radius: 6px;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: rgba(255 255 255 / 0.2);
+      color: #eff6ff;
+    }
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+      padding: 48px 0;
+      flex-wrap: wrap;
+    }
+    .hero-text {
+      flex: 1 1 320px;
+      max-width: 540px;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 24px;
+      font-weight: 700;
+      color: rgb(111, 111, 221);;
+      line-height: 1.1;
+    }
+    .hero-text p {
+      font-size: 1.2rem;
+      color: white;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+    .hero-image {
+      flex: 1 1 320px;
+      max-width: 480px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgb(0 0 0 / 0.15);
+      transition: transform 0.3s ease;
+    }
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+    .hero-image:hover,
+    .hero-image:focus-within {
+      transform: scale(1.05);
+      outline: none;
+    }
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: rgb(111, 111, 221);
+    }
+    p {
+      font-size: 1.1rem;
+      color: white;
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+    .personal-info,
+    .education,
+    .skills {
+      margin-bottom: 64px;
+    }
+    dl {
+      max-width: 600px;
+    }
+    dt {
+      font-weight: 600;
+      margin-top: 16px;
+      color: #2563eb;
+    }
+    dd {
+      margin-left: 0;
+      margin-bottom: 12px;
+      color: white;
+    }
+    ul.education-list {
+      list-style: none;
+      padding-left: 0;
+      max-width: 700px;
+    }
+    ul.education-list li {
+      margin-bottom: 20px;
+      color: white;
+    }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      max-width: 700px;
+    }
+    .skill-pill {
+      background-color: #e0e7ff;
+      color: #2563eb;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-size: 1rem;
+      user-select: none;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
+      transition: background-color 0.3s ease;
+    }
+    .skill-pill:hover,
+    .skill-pill:focus {
+      background-color: #c7d2fe;
+      outline: none;
+      cursor: default;
+    }
+    address {
+      font-style: normal;
+      color: #4b5563;
+      font-size: 1rem;
+      line-height: 1.5;
+      max-width: 600px;
+      margin-bottom: 64px;
+    }
+    address a {
+      color: #2563eb;
+      font-weight: 600;
+    }
+    footer {
+      background-color: black;
+      color: #d1d5db;
+      padding: 32px 0;
+      font-size: 0.9rem;
+    }
+    footer .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+    footer .social-links {
+      display: flex;
+      gap: 24px;
+    }
+    footer .material-icons {
+      font-size: 28px;
+      color: #2563eb;;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    footer .material-icons:hover,
+    footer .material-icons:focus {
+      color: #2563eb;
+      outline: none;
+    }
+    /* Responsive */
+    @media (max-width: 960px) {
+      .hero {
+        gap: 32px;
+      }
+    }
+    @media (max-width: 640px) {
+      nav {
+        gap: 16px;
+      }
+      .logo {
+        font-size: 1.5rem;
+      }
+      main {
+        padding: 32px 0;
+      }
+      .hero {
+        flex-direction: column;
+        padding: 32px 0;
+      }
+      .hero-text,
+      .hero-image {
+        max-width: 100%;
+        flex: none;
+      }
+      .hero-text h1 {
+        font-size: 2.25rem;
+      }
+      .hero-text p {
+        font-size: 1rem;
+      }
+      .skills-list {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">M. Sorwar Jahan Mazbah</div>
+      <nav>
+        <a href="#about" tabindex="0">Home</a>
+        <a href="#personal-info" tabindex="0">Personal Info</a>
+        <a href="#education" tabindex="0">Education</a>
+        <a href="#skills" tabindex="0">Skills</a>
+        <a href="#contact" tabindex="0">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <section id="about" class="hero">
+      <div class="hero-text">
+        <h1>Hi, I am M. Sorwar Jahan Mazbah</h1>
+        <p>I am currently a student but aspriring to be a Full Stack Web Developer.</p>
+      </div>
+      <div class="hero-image" tabindex="0">
+        <img src="mazbah.jpg" alt="M. Sorwar Jahan Mazbah" />
+      </div>
+    </section>
+
+    <section id="personal-info" class="personal-info">
+      <h2>Personal Information</h2>
+      <dl>
+        <dt>Full Name:</dt>
+        <dd>M. Sorwar Jahan Mazbah</dd>
+        <dt>Current Address:</dt>
+        <dd>123, WASA Road, West Shewrapara, Mirput-10, Dhaka</dd>
+        <dt>Permanent Address:</dt>
+        <dd>Village- Char Brahmandi, Post Office- Kulpoddi, Police Station- Madaripur, District- Madaripur, Dhaka.</dd>
+        <dt>Language: </dt>
+        <dd>Bangla (Native), English(Professional)</dd>
+        <dt>Availability: </dt>
+        <dd>Open to freelance, internship and full-time oppurtunities</dd>
+      </dl>
+    </section>
+
+    <section id="education" class="education">
+      <h2>Education</h2>
+      <ul>
+         <li>
+           <strong style="color: #2563eb;">Bachelor of Computer Science and Engineering</strong>
+           <br>
+           World University of Bangladesh: 2023 - Present
+         </li>
+         <li>
+           <strong style="color: #2563eb;">Higher Secondary Certificate</strong>
+           <br>
+           GPA - 4.25
+           <br>
+           Dhaka Commerce College: 2020 - 2022 
+         </li>
+         <li>
+           <strong style="color: #2563eb;">Secondary School Certificate</strong>
+           <br>
+           GPA - 4.56
+           <br>
+           Mirpur English Version School & College: 2018 - 2020
+         </li>
+        </ul>
+    </section>
+    <section id="skills" class="skills">
+      <h2>Skills</h2>
+      <div class="skills-list">
+        <span class="skill-pill" tabindex="0">HTML</span>
+        <span class="skill-pill" tabindex="0">CSS</span>
+        <span class="skill-pill" tabindex="0">JavaScript</span>
+        <span class="skill-pill" tabindex="0">C++</span>
+        <span class="skill-pill" tabindex="0">Git & GitHub</span>
+        <span class="skill-pill" tabindex="0">SEO Basics</span>
+      </div>
+    </section>
+    <section id="contact">
+      <h2>Get In Touch</h2>
+      <p>If you want to discuss a project or just say hi, feel free to contact me through the following channels:</p>
+      <address>
+        <strong>Email:</strong> <a href="mailto:m.sorwarjahanmazbah@gmail.com">m.sorwarjahanmazbah@gmail.com</a><br>
+        <strong>Phone:</strong> <a href="tel:+8801999953772">+880 1999-953772</a>
+      </address>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="https://github.com/Mazbah689"><span class="material-icons">GitHub</span></a>
+        <a href="https://www.linkedin.com/in/m-sorwar-jahan-mazbah-a41a43337/"><span class="material-icons">Linkedin</span></a>
+        <a href="https://leetcode.com/u/Mazbah689/"><span class="material-icons">Leetcode</span></a>
+        <a href="https://www.facebook.com/sorwarjahan.mazbah.92/"><span class="material-icons">Facebook</span></a>
+        <a href="https://www.instagram.com/mazbah689/"><span class="material-icons">Instagram</span></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
